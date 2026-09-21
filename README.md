@@ -1,4 +1,4 @@
-# A Prefactor Coefficient Law for the Gauss-Legendre AGM Algorithm
+# Prefactor Coefficient Laws for the Gauss-Legendre AGM Algorithm
 
 **Author:** Wayne Baker  
 **Revised:** September 21, 2026  
@@ -6,7 +6,7 @@
 
 This repository contains the paper, LaTeX source, and numerical verification script for:
 
-> **A Prefactor Coefficient Law for the Gauss-Legendre AGM Algorithm**
+> **Prefactor Coefficient Laws for the Gauss-Legendre AGM Algorithm**
 
 ## Read the paper
 
