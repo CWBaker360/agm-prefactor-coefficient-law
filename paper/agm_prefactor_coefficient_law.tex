@@ -6,7 +6,7 @@
 
 \geometry{margin=1in}
 
-\title{\textbf{A Prefactor Coefficient Law\\
+\title{\textbf{Prefactor Coefficient Laws\\
 for the Gauss--Legendre AGM Algorithm}}
 
 \author{Wayne Baker\\
@@ -22,14 +22,13 @@ for the Gauss--Legendre AGM Algorithm}}
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}
 \newtheorem{remark}{Remark}
-\newtheorem{observation}{Numerical Observation}
 
 \begin{document}
 
 \maketitle
 
 \begin{abstract}
-We study a fitted error--operator coefficient associated with the Gauss--Legendre arithmetic--geometric mean (AGM) algorithm for $\pi$. For consecutive Gauss--Legendre approximants $\pi_n$, define
+We study two fitted coefficients associated with the Gauss--Legendre arithmetic--geometric mean (AGM) algorithm for $\pi$. For consecutive Gauss--Legendre approximants $\pi_n$, define
 \[
 \alpha_n
 =
@@ -38,7 +37,7 @@ We study a fitted error--operator coefficient associated with the Gauss--Legendr
 This coefficient is the exact one--step weight which corrects $\pi_{n+1}$ to
 $\pi$ using the increment $\pi_{n+1}-\pi_n$.
 
-The main result is a coefficient law for the Gauss--Legendre error operator:
+The first result is a coefficient law for the Gauss--Legendre error operator:
 \[
 \frac{\alpha_{n+1}}{\alpha_n^2}
 \longrightarrow
@@ -50,7 +49,7 @@ Gauss--Legendre approximant. In the notation of the present paper, that expansio
 \pi-\pi_n
 =
 \left(2^{n+4}\pi^2-8\pi\right)e^{-\pi 2^{n+1}}
--
++
 O\!\left(2^n e^{-\pi 2^{n+2}}\right).
 \]
 Consequently, if
@@ -65,7 +64,7 @@ and hence $A_{n+1}/A_n\to 2$. The limiting coefficient $1/2$ thus arises from
 exact cancellation of the doubly--exponential factor in the quotient
 $\alpha_{n+1}/\alpha_n^2$, leaving a prefactor ratio that tends to $1/2$.
 
-For the companion numerator--surgery coefficients $\beta_n$, a direct
+For the companion numerator--channel coefficients $\beta_n$, a direct
 theta--function analysis gives the sharper prefactor law
 \[
 \beta_n
@@ -145,7 +144,7 @@ Thus $\alpha_n$ is the exact fitted coefficient which recovers $\pi$ from the
 two successive approximants.
 
 For later comparison, define the numerator sequence $Q_n=(a_n+b_n)^2$ and the
-numerator-surgery coefficient
+numerator-channel coefficient
 \[
 \beta_n=-\frac{Q_{n+1}-4\pi t_{n+1}}{Q_{n+1}-Q_n},
 \]
@@ -529,7 +528,7 @@ expansion.
 
 \begin{theorem}[Numerator-channel prefactor law]
 \label{thm:beta-prefactor}
-The numerator--surgery coefficient satisfies
+The numerator--channel coefficient satisfies
 \[
 \boxed{
 \beta_n
@@ -665,9 +664,12 @@ $\alpha_{n+1}/\alpha_n^2\to 1/2$.
 \item The limit $1/2$ arises from exact cancellation of the doubly--exponential
 factor and from the prefactor quotient; it is not a consequence of a fixed
 quadratic error map.
-\item The numerator--surgery coefficients satisfy the analytic prefactor law
-$\beta_n\sim-(2^{n+2}\pi-1)e^{-\pi2^{n+1}}$ and the scaled quotient law
-$-\pi2^{n+1}\beta_{n+1}/\beta_n^2\to1$.
+\item The numerator--channel coefficients satisfy
+\[
+\beta_n\sim-(2^{n+2}\pi-1)e^{-\pi2^{n+1}},
+\qquad
+-\pi2^{n+1}\frac{\beta_{n+1}}{\beta_n^2}\to1.
+\]
 \end{enumerate}
 
 \paragraph{Reproducibility.}
