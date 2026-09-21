@@ -167,8 +167,21 @@ and
 
 \begin{proof}
 From $\alpha_n=\dfrac{r_n}{1-r_n}$ and $r_n\to0$ we obtain
-$\alpha_n\sim r_n$. A short algebraic manipulation yields the second displayed
-relation.
+$\alpha_n\sim r_n$. More precisely,
+\[
+\frac{\alpha_{n+1}}{\alpha_n^2}
+=
+\frac{r_{n+1}}{r_n^2}
+\frac{(1-r_n)^2}{1-r_{n+1}}.
+\]
+Since $r_n,r_{n+1}\to0$, the correction factor tends to $1$, and therefore
+\[
+\frac{\alpha_{n+1}}{\alpha_n^2}
+\sim
+\frac{r_{n+1}}{r_n^2}
+=
+\frac{\varepsilon_{n+2}\varepsilon_n^2}{\varepsilon_{n+1}^3}.
+\]
 \end{proof}
 
 \section{Prefactor Asymptotic}
@@ -313,8 +326,19 @@ defining recursion and using \texttt{mp.pi} for the reference value of
 $\pi$. The fitted coefficients and diagnostic ratios support the theoretical limit
 over the precision and ranges shown in Tables~\ref{tab:alpha} and~\ref{tab:ratio}.
 As an independent check, the direct error quotient
-$\varepsilon_{n+2}\varepsilon_n^2/\varepsilon_{n+1}^3$ agrees with
-$\alpha_{n+1}/\alpha_n^2$ to the displayed digits in the runs used here.
+$\varepsilon_{n+2}\varepsilon_n^2/\varepsilon_{n+1}^3$ approaches
+$\alpha_{n+1}/\alpha_n^2$ rapidly.  The two quantities are not identical at
+finite $n$; their exact relation is
+\[
+\frac{\alpha_{n+1}}{\alpha_n^2}
+=
+\frac{\varepsilon_{n+2}\varepsilon_n^2}{\varepsilon_{n+1}^3}
+\frac{(1-r_n)^2}{1-r_{n+1}},
+\qquad
+r_n=\frac{\varepsilon_{n+1}}{\varepsilon_n}.
+\]
+The correction factor tends to $1$, explaining the increasing numerical
+agreement in Table~\ref{tab:ratio}.
 
 \begin{table}[h]
 \centering
