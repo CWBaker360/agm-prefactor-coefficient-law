@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use or discuss this work, please cite it using the metadata below."
-title: "A Prefactor Coefficient Law for the Gauss-Legendre AGM Algorithm"
+title: "Prefactor Coefficient Laws for the Gauss-Legendre AGM Algorithm"
 type: article
 authors:
   - family-names: Baker
