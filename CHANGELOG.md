@@ -10,6 +10,7 @@
   \(-\pi2^{n+1}\beta_{n+1}/\beta_n^2\to1\).
 - Added a dedicated high-precision beta-channel verification script.
 - Updated the abstract, README, and reproducibility documentation.
+- Retitled the revised manuscript to reflect the two analytic coefficient laws and standardized numerator-channel terminology.
 
 ## preprint-v1 — 2026-07-13
 
