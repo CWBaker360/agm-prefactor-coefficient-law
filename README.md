@@ -1,7 +1,7 @@
 # A Prefactor Coefficient Law for the Gauss-Legendre AGM Algorithm
 
 **Author:** Wayne Baker  
-**Date:** June 30, 2026  
+**Revised:** September 21, 2026  
 **Status:** Preprint / source and reproducibility archive
 
 This repository contains the paper, LaTeX source, and numerical verification script for:
@@ -47,6 +47,37 @@ A_n\sim-2^{n+4}\pi^2,
 
 The doubly exponential terms cancel exactly in the quotient that determines \(\alpha_{n+1}/\alpha_n^2\), leaving the prefactor limit \(1/2\).
 
+The companion numerator-channel coefficient
+\[
+\beta_n
+=
+-\frac{Q_{n+1}-4\pi t_{n+1}}{Q_{n+1}-Q_n},
+\qquad
+Q_n=(a_n+b_n)^2,
+\]
+now has an analytic prefactor law as well.  With
+\[
+x_n=e^{-\pi2^{n+1}},
+\qquad
+C_n=2^{n+2}\pi-1,
+\]
+the paper proves
+\[
+\beta_n
+=
+-C_nx_n
+\left[
+1-2x_n+
+\left(2-\frac1{C_n}\right)x_n^2
++O(x_n^3)
+\right],
+\]
+and consequently
+\[
+-\pi2^{n+1}\frac{\beta_{n+1}}{\beta_n^2}
+\longrightarrow1.
+\]
+
 ## Numerical verification
 
 The script
@@ -61,19 +92,25 @@ reconstructs the Gauss-Legendre sequence at arbitrary precision and reproduces t
 \frac{\varepsilon_{n+2}\varepsilon_n^2}{\varepsilon_{n+1}^3}.
 \]
 
-Run from the repository root:
+Run the original \(\alpha_n\) audit from the repository root:
 
 ```bash
 python scripts/verify_agm_coefficient_law.py --precision 500 --outdir outputs
+```
+
+Run the sharpened \(\beta_n\) audit with:
+
+```bash
+python scripts/verify_agm_beta_prefactor_law.py --precision 1000 --iterations 7
 ```
 
 ## Scope
 
 The theorem concerns a fitted dynamic error coefficient for the lower Gauss-Legendre approximants. It does not assert a fixed recurrence of the form \(\varepsilon_{n+1}\sim C\varepsilon_n^2\) with nonzero constant \(C\).
 
-The companion statement about the numerator-surgery coefficients \(\beta_n\) is explicitly numerical; it is not promoted to a theorem in this paper.
+The numerator-surgery statement is also analytic: it is derived from Brent's exact theta parametrization and tail identity, together with the defining theta-series expansions.
 
-The verification script supports the reported computations. The proof of the main coefficient law is analytic and rests on the cited theta-function asymptotic.
+The verification scripts support the reported computations. They are not used as theorem evidence; both coefficient laws are proved analytically from the cited theta-function formulas.
 
 ## Related repositories
 
@@ -98,6 +135,7 @@ The verification script supports the reported computations. The proof of the mai
 │   └── README.md
 ├── scripts/
 │   ├── verify_agm_coefficient_law.py
+│   ├── verify_agm_beta_prefactor_law.py
 │   └── README.md
 └── docs/
     ├── abstract.md
