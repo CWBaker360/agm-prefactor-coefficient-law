@@ -1,5 +1,16 @@
 # Changelog
 
+## preprint-v2 — 2026-09-21
+
+- Promoted the numerator-surgery coefficient from a numerical observation to an analytic theorem.
+- Added the prefactor expansion
+  \(\beta_n=-C_nx_n[1-2x_n+(2-C_n^{-1})x_n^2+O(x_n^3)]\),
+  with \(x_n=e^{-\pi2^{n+1}}\) and \(C_n=2^{n+2}\pi-1\).
+- Proved the scaled quotient law
+  \(-\pi2^{n+1}\beta_{n+1}/\beta_n^2\to1\).
+- Added a dedicated high-precision beta-channel verification script.
+- Updated the abstract, README, and reproducibility documentation.
+
 ## preprint-v1 — 2026-07-13
 
 - Created the standalone paper and reproducibility archive.
