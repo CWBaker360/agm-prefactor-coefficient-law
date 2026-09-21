@@ -44,6 +44,22 @@ outputs/verification_summary.txt
 
 It checks the values printed in the paper unless `--skip-table-check` is supplied.
 
+## Reproduce the beta-channel prefactor audit
+
+From the repository root:
+
+```bash
+python scripts/verify_agm_beta_prefactor_law.py --precision 1000 --iterations 7
+```
+
+The beta audit writes:
+
+```text
+outputs/agm_beta_prefactor_audit.csv
+```
+
+The default range \(n=0,\ldots,6\) avoids the cancellation-driven precision floor that appears if too many AGM iterations are requested at fixed working precision.
+
 ## Numerical quantities
 
 The script reconstructs the lower Gauss-Legendre approximants and computes:
@@ -66,6 +82,25 @@ A_n=\varepsilon_n e^{\pi 2^{n+1}},
 
 `mp.pi` is used as the numerical reference value of \(\pi\).
 
+The beta-channel audit additionally computes
+\[
+x_n=e^{-\pi2^{n+1}},
+\qquad
+C_n=2^{n+2}\pi-1,
+\]
+and checks the normalized asymptotic expansions
+\[
+\frac{\beta_n}{-C_nx_n}
+=
+1-2x_n+\left(2-\frac1{C_n}\right)x_n^2+O(x_n^3),
+\]
+and
+\[
+\frac{\beta_{n+1}/\beta_n^2}{-C_{n+1}/C_n^2}
+=
+1+4x_n+\left(6+\frac2{C_n}\right)x_n^2+O(x_n^3).
+\]
+
 ## Interpretation
 
-The computation reproduces the finite-index tables and checks implementation consistency. The limiting law is proved analytically in the paper from Brent's theta-function expansion; it is not inferred solely from decimal agreement.
+The computations reproduce the finite-index tables and check implementation consistency. The \(\alpha_n\) and \(\beta_n\) limiting laws are proved analytically in the paper from Brent's theta-function formulas; they are not inferred solely from decimal agreement.
