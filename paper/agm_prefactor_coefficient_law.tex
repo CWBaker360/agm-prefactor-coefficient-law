@@ -13,7 +13,7 @@ for the Gauss--Legendre AGM Algorithm}}
 \small Independent Researcher\\
 \small Goulds, Newfoundland and Labrador, Canada}
 
-\date{June 30, 2026}
+\date{September 21, 2026}
 
 \theoremstyle{plain}
 \newtheorem{theorem}{Theorem}
@@ -65,9 +65,20 @@ and hence $A_{n+1}/A_n\to 2$. The limiting coefficient $1/2$ thus arises from
 exact cancellation of the doubly--exponential factor in the quotient
 $\alpha_{n+1}/\alpha_n^2$, leaving a prefactor ratio that tends to $1/2$.
 
-We also record a companion numerical observation for numerator--surgery
-coefficients $\beta_n$, for which $\beta_{n+1}/\beta_n^2\to 0$ in
-high--precision computation. Finally, we explain why the static Baker
+For the companion numerator--surgery coefficients $\beta_n$, a direct
+theta--function analysis gives the sharper prefactor law
+\[
+\beta_n
+=
+-\left(2^{n+2}\pi-1\right)e^{-\pi 2^{n+1}}
+\left(1+O\!\left(e^{-\pi 2^{n+1}}\right)\right),
+\]
+and consequently
+\[
+-\pi 2^{n+1}\frac{\beta_{n+1}}{\beta_n^2}\longrightarrow1.
+\]
+Thus the previously observed decay $\beta_{n+1}/\beta_n^2\to0$ is analytic,
+with an explicit leading scale. Finally, we explain why the static Baker
 N--series cancellation operator does not transfer directly to the
 Gauss--Legendre setting, while the natural dynamic cancellation principle is
 closely related to Aitken's $\Delta^2$ process.
@@ -133,10 +144,10 @@ holds for each $n$.
 Thus $\alpha_n$ is the exact fitted coefficient which recovers $\pi$ from the
 two successive approximants.
 
-For later comparison, define the numerator sequence $q_n=(a_n+b_n)^2$ and the
+For later comparison, define the numerator sequence $Q_n=(a_n+b_n)^2$ and the
 numerator-surgery coefficient
 \[
-\beta_n=-\frac{q_{n+1}-4\pi t_{n+1}}{q_{n+1}-q_n},
+\beta_n=-\frac{Q_{n+1}-4\pi t_{n+1}}{Q_{n+1}-Q_n},
 \]
 which plays an analogous role on the numerator channel.
 
@@ -344,15 +355,271 @@ asymptotic.}
 \label{tab:ratio}
 \end{table}
 
-\section{The $\beta_n$ Coefficients}
+\section{The Numerator-Channel Coefficients}
 
-\begin{observation}
-At 500--digit working precision the numerator--surgery coefficients $\beta_n$
-satisfy $\beta_{n+1}=o(\beta_n^2)$ numerically, i.e. $\beta_{n+1}/\beta_n^2\to0$.
-The fitted finite--$n$ ratios approximately halve at each step. We record
-this only as a numerical observation; a formal proof would require a separate
-prefactor analysis for the numerator channel.
-\end{observation}
+For this section let Brent's elliptic nome be
+\[
+q=e^{-\pi},
+\]
+and define
+\[
+x_n=q^{2^{n+1}}=e^{-\pi 2^{n+1}},
+\qquad
+C_n=2^{n+2}\pi-1.
+\]
+Also set
+\[
+M=\operatorname{AGM}\!\left(1,\frac1{\sqrt2}\right)
+=\theta_3^{-2}(q).
+\]
+The capital notation \(Q_n=(a_n+b_n)^2\) distinguishes the numerator sequence
+from the nome \(q\).
+
+\begin{lemma}\label{lem:beta-theta}
+As \(n\to\infty\),
+\[
+Q_{n+1}-Q_n
+=
+-32M^2x_n
+\left(
+1+2x_n+4x_n^2+O(x_n^4)
+\right),
+\]
+and
+\[
+Q_{n+1}-4\pi t_{n+1}
+=
+-32M^2C_nx_n^2
+\left[
+1+\left(2-\frac1{C_n}\right)x_n^2+O(x_n^4)
+\right].
+\]
+The implied constants may be chosen independently of \(n\).
+\end{lemma}
+
+\begin{proof}
+Brent's theta parametrization gives
+\[
+a_n
+=
+\frac{\theta_3^2(q^{2^n})}{\theta_3^2(q)}
+=
+M\theta_3^2(q^{2^n});
+\]
+see Brent~\cite[Section~4, Eq.~(13)]{brent2020}. Since
+\(a_{n+1}=(a_n+b_n)/2\),
+\[
+Q_n=4a_{n+1}^2=4M^2\theta_3^4(x_n).
+\]
+Because \(x_{n+1}=x_n^2\),
+\[
+Q_{n+1}-Q_n
+=
+4M^2\left[\theta_3^4(x_n^2)-\theta_3^4(x_n)\right].
+\]
+From the defining theta series,
+\[
+\theta_3(x)=1+2x+2x^4+O(x^9),
+\]
+hence
+\[
+\theta_3^4(x)
+=
+1+8x+24x^2+32x^3+24x^4+48x^5+O(x^6).
+\]
+It follows that
+\[
+\theta_3^4(x^2)-\theta_3^4(x)
+=
+-8x-16x^2-32x^3+O(x^5),
+\]
+which proves the first expansion.
+
+For the second difference, Brent's exact limit and tail formulas are
+\[
+t_\infty=\frac{M^2}{\pi},
+\qquad
+t_{n+1}-t_\infty
+=
+M^2\sum_{m=n+1}^{\infty}
+2^m\theta_2^4(q^{2^{m+1}});
+\]
+see Brent~\cite[Section~4, Eqs.~(17)--(18)]{brent2020}. Therefore
+\[
+Q_{n+1}-4\pi t_{n+1}
+=
+4M^2
+\left[
+\theta_3^4(x_n^2)-1
+-
+\pi\sum_{m=n+1}^{\infty}
+2^m\theta_2^4(q^{2^{m+1}})
+\right].
+\]
+The defining series gives
+\[
+\theta_2(y)
+=
+2y^{1/4}\left(1+y^2+O(y^6)\right),
+\qquad
+\theta_2^4(y)
+=
+16y+64y^3+O(y^5).
+\]
+Reindexing the tail with \(m=n+1+j\) yields
+\[
+\sum_{m=n+1}^{\infty}
+2^m\theta_2^4(q^{2^{m+1}})
+=
+2^{n+5}x_n^2
++
+2^{n+6}x_n^4
++
+O(2^n x_n^6),
+\]
+where the terms \(j\ge2\) are smaller still. Also
+\[
+\theta_3^4(x_n^2)-1
+=
+8x_n^2+24x_n^4+O(x_n^6).
+\]
+Thus
+\begin{align*}
+\frac{Q_{n+1}-4\pi t_{n+1}}{4M^2}
+&=
+(8-2^{n+5}\pi)x_n^2
++
+(24-2^{n+6}\pi)x_n^4
++
+O(2^n x_n^6)\\
+&=
+-8C_nx_n^2
+-
+8(2C_n-1)x_n^4
++
+O(2^n x_n^6).
+\end{align*}
+Since \(C_n\asymp2^n\), division by the leading term gives the stated second
+expansion.
+\end{proof}
+
+\begin{theorem}[Numerator-channel prefactor law]
+\label{thm:beta-prefactor}
+The numerator--surgery coefficient satisfies
+\[
+\boxed{
+\beta_n
+=
+-C_nx_n
+\left[
+1-2x_n+
+\left(2-\frac1{C_n}\right)x_n^2
++O(x_n^3)
+\right].
+}
+\]
+In particular,
+\[
+\beta_n
+\sim
+-\left(2^{n+2}\pi-1\right)e^{-\pi2^{n+1}}.
+\]
+Moreover,
+\[
+\boxed{
+\frac{\beta_{n+1}}{\beta_n^2}
+=
+-\frac{C_{n+1}}{C_n^2}
+\left[
+1+4x_n+
+\left(6+\frac{2}{C_n}\right)x_n^2
++O(x_n^3)
+\right].
+}
+\]
+Consequently,
+\[
+\frac{\beta_{n+1}}{\beta_n^2}
+\sim
+-\frac{1}{\pi2^{n+1}},
+\qquad
+\boxed{
+-\pi2^{n+1}\frac{\beta_{n+1}}{\beta_n^2}\longrightarrow1.
+}
+\]
+\end{theorem}
+
+\begin{proof}
+By Lemma~\ref{lem:beta-theta},
+\[
+\beta_n
+=
+-C_nx_n
+\frac{
+1+\left(2-C_n^{-1}\right)x_n^2+O(x_n^4)
+}{
+1+2x_n+4x_n^2+O(x_n^4)
+}.
+\]
+Since
+\[
+\frac1{1+2x+4x^2+O(x^4)}
+=
+1-2x+8x^3+O(x^4),
+\]
+multiplication gives the first expansion.
+
+Now \(x_{n+1}=x_n^2\). Applying the first expansion at \(n\) and \(n+1\)
+gives
+\[
+\beta_{n+1}
+=
+-C_{n+1}x_n^2
+\left[1-2x_n^2+O(x_n^4)\right]
+\]
+and
+\[
+\beta_n^2
+=
+C_n^2x_n^2
+\left[
+1-4x_n+
+\left(8-\frac{2}{C_n}\right)x_n^2
++O(x_n^3)
+\right].
+\]
+Taking the quotient and expanding the reciprocal yields the stated quotient
+formula. Finally,
+\[
+\frac{C_{n+1}}{C_n^2}
+=
+\frac{2^{n+3}\pi-1}{(2^{n+2}\pi-1)^2}
+\sim
+\frac{1}{\pi2^{n+1}},
+\]
+which proves the scaled limit.
+\end{proof}
+
+\begin{remark}
+The theorem explains the formerly numerical observation that
+\(\beta_{n+1}/\beta_n^2\) tends to zero with an approximately halving
+finite-\(n\) scale. Setting \(A_n=2^{n+2}\pi\),
+\[
+\pi2^{n+1}\frac{C_{n+1}}{C_n^2}
+=
+\frac{A_n(2A_n-1)}{2(A_n-1)^2}
+=
+1+\frac{3}{2A_n}+\frac{2}{A_n^2}+O(A_n^{-3}).
+\]
+Thus
+\[
+-\pi2^{n+1}\frac{\beta_{n+1}}{\beta_n^2}
+=
+1+\frac{3}{2^{n+3}\pi}
++O(4^{-n})
++O(x_n).
+\]
+\end{remark}
 
 \section{Relation to Static and Dynamic Cancellation Operators}
 
@@ -374,8 +641,9 @@ $\alpha_{n+1}/\alpha_n^2\to 1/2$.
 \item The limit $1/2$ arises from exact cancellation of the doubly--exponential
 factor and from the prefactor quotient; it is not a consequence of a fixed
 quadratic error map.
-\item Numerically, numerator--surgery coefficients decay super--quadratically
-and are dominated asymptotically by the $\alpha_n$ channel.
+\item The numerator--surgery coefficients satisfy the analytic prefactor law
+$\beta_n\sim-(2^{n+2}\pi-1)e^{-\pi2^{n+1}}$ and the scaled quotient law
+$-\pi2^{n+1}\beta_{n+1}/\beta_n^2\to1$.
 \end{enumerate}
 
 \paragraph{Reproducibility.}
@@ -383,7 +651,9 @@ Numerical values were generated by reconstructing the Gauss--Legendre sequence
 at 500 decimal digits and computing the diagnostics
 $\varepsilon_n,\alpha_n,\alpha_{n+1}/\alpha_n^2,
 \varepsilon_{n+2}\varepsilon_n^2/\varepsilon_{n+1}^3$, and
-$A_{n+1}/A_n$ with \texttt{mpmath}. The reference $\pi$ was \texttt{mp.pi}.
+$A_{n+1}/A_n$ with \texttt{mpmath}. A companion high--precision audit checks
+the $\beta_n$ prefactor expansion and scaled quotient law. The reference $\pi$
+was \texttt{mp.pi}.
 
 \begin{thebibliography}{9}
 \bibitem{aitken1926}
