@@ -2,7 +2,7 @@
 
 ## GitHub description
 
-A prefactor coefficient law for the Gauss-Legendre AGM algorithm.
+Analytic prefactor coefficient laws for two fitted channels of the Gauss-Legendre AGM algorithm.
 
 ## Suggested topics
 
