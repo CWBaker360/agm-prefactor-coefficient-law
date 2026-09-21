@@ -115,11 +115,19 @@ O\!\left(2^n e^{-\pi 2^{n+2}}\right).
 \]
 
 \begin{remark}
-The phrase ``quadratic convergence'' should not be confused with the stronger
-local model $\varepsilon_{n+1}\sim C\varepsilon_n^2$ for a fixed $C\neq 0$.
-Numerically the ratio $\varepsilon_{n+1}/\varepsilon_n^2$ tends to zero for
-the Gauss--Legendre sequence, so the constant-$C$ quadratic map is not the
-correct local model here.
+The phrase ``quadratic convergence'' should not be confused with a fixed
+constant-$C$ model for every associated error sequence.  For Brent's upper
+approximants $a_n^2/t_n$, the corresponding errors $e_n=a_n^2/t_n-\pi$
+satisfy
+\[
+\frac{e_{n+1}}{e_n^2}\longrightarrow\frac1{8\pi};
+\]
+see Brent~\cite[Section~4, following Eq.~(19)]{brent2020}.  By contrast, for
+the lower approximants used here,
+$\varepsilon_n=\pi_n-\pi$ satisfies
+$\varepsilon_{n+1}/\varepsilon_n^2\to0$.  Thus the lower channel has a
+rapidly varying prefactor even though the overall iteration remains
+quadratically convergent in the usual digits-doubling sense.
 \end{remark}
 
 \section{Fitted Operator Coefficients}
@@ -278,7 +286,7 @@ and therefore
 \]
 \end{proof}
 
-\section{Main Coefficient Law}
+\section{The $\alpha_n$ Coefficient Law}
 
 \begin{theorem}\label{thm:main}
 With $\alpha_n$ as above, one has
@@ -317,7 +325,7 @@ linear--in--$2^n$ growth of $A_n$. It does not follow from a fixed quadratic
 recurrence $\varepsilon_{n+1}\sim C\varepsilon_n^2$.
 \end{remark}
 
-\section{Numerical Verification}
+\section{Numerical Verification of the $\alpha_n$ Law}
 
 All reported numerical values were computed with \texttt{mpmath} at
 500 decimal digits, reconstructing the Gauss--Legendre sequence from its
