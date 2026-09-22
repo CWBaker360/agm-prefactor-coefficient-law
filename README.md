@@ -136,6 +136,7 @@ The verification scripts support the reported computations. They are not used as
 ├── scripts/
 │   ├── verify_agm_coefficient_law.py
 │   ├── verify_agm_beta_prefactor_law.py
+│   ├── regenerate_sha256s.py
 │   └── README.md
 └── docs/
     ├── abstract.md
