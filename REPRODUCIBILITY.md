@@ -104,3 +104,20 @@ and
 ## Interpretation
 
 The computations reproduce the finite-index tables and check implementation consistency. The \(\alpha_n\) and \(\beta_n\) limiting laws are proved analytically in the paper from Brent's theta-function formulas; they are not inferred solely from decimal agreement.
+
+
+## Regenerate the integrity ledger
+
+Commit all manuscript, script, and documentation changes first. Then, from the
+repository root, run:
+
+```bash
+python scripts/regenerate_sha256s.py
+```
+
+The script hashes the exact Git blob bytes stored at `HEAD` rather than the
+platform-dependent working-tree representation. This avoids CRLF/LF checksum
+differences on Windows.
+
+Review the resulting `SHA256SUMS.txt`, then commit that ledger as a separate
+finalization commit. The ledger intentionally excludes itself.
