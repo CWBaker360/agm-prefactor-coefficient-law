@@ -13,6 +13,7 @@
 - Retitled the revised manuscript to reflect the two analytic coefficient laws and standardized numerator-channel terminology.
 - Added an explicit citation for the N-series comparison and corrected the Brent volume title to *Visualisation*.
 - Removed the non-SPDX `proprietary` value from `CITATION.cff`; rights remain governed by `LICENSE_NOTICE.md`.
+- Added a platform-independent SHA-256 generator that hashes canonical Git blob bytes, avoiding Windows CRLF/LF checksum drift.
 
 ## preprint-v1 — 2026-07-13
 
