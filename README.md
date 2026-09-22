@@ -108,13 +108,13 @@ python scripts/verify_agm_beta_prefactor_law.py --precision 1000 --iterations 7
 
 The theorem concerns a fitted dynamic error coefficient for the lower Gauss-Legendre approximants. It does not assert a fixed recurrence of the form \(\varepsilon_{n+1}\sim C\varepsilon_n^2\) with nonzero constant \(C\).
 
-The numerator-surgery statement is also analytic: it is derived from Brent's exact theta parametrization and tail identity, together with the defining theta-series expansions.
+The numerator-channel statement is also analytic: it is derived from Brent's exact theta parametrization and tail identity, together with the defining theta-series expansions.
 
 The verification scripts support the reported computations. They are not used as theorem evidence; both coefficient laws are proved analytically from the cited theta-function formulas.
 
 ## Related repositories
 
-- [`nseries-pi-acceleration`](https://github.com/CWBaker360/nseries-pi-acceleration)
+- [`N-Series-pi-acceleration`](https://github.com/CWBaker360/N-Series-pi-acceleration)
 - [`constructible-cubic-trisection`](https://github.com/CWBaker360/constructible-cubic-trisection)
 - [`proportional-subtended-cubic-refinement`](https://github.com/CWBaker360/proportional-subtended-cubic-refinement)
 
@@ -139,6 +139,7 @@ The verification scripts support the reported computations. They are not used as
 │   └── README.md
 └── docs/
     ├── abstract.md
+    ├── prior_art_audit_2026-09-21.md
     ├── repository_description.md
     └── github_upload_checklist.md
 ```
