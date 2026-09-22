@@ -4,11 +4,11 @@ title: "A Prefactor Coefficient Law for the Gauss-Legendre AGM Algorithm"
 type: article
 authors:
   - family-names: Baker
-    given-names: Wayne
-date-released: 2026-06-30
-version: preprint-v1
+    given-names: C. Wayne
+date-released: 2026-09-22
+doi: "10.5281/zenodo.22896047"
 repository-code: "https://github.com/CWBaker360/agm-prefactor-coefficient-law"
-url: "https://github.com/CWBaker360/agm-prefactor-coefficient-law"
+url: "https://doi.org/10.5281/zenodo.22896047"
 abstract: >-
   This paper studies an exact fitted correction coefficient for consecutive
   lower Gauss-Legendre approximants. Using Brent's theta-function expansion,
@@ -18,9 +18,10 @@ abstract: >-
 keywords:
   - Gauss-Legendre algorithm
   - arithmetic-geometric mean
-  - pi
-  - theta functions
-  - asymptotic analysis
-  - numerical verification
+  - operator coefficients
+  - sequence acceleration
   - Aitken delta-squared process
-license: proprietary
+  - prefactor asymptotics
+  - Baker N-series
+  - numerical analysis
+license: CC-BY-4.0
