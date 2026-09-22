@@ -1,15 +1,18 @@
 # A Prefactor Coefficient Law for the Gauss-Legendre AGM Algorithm
 
 **Author:** Wayne Baker  
-**Date:** June 30, 2026  
-**Status:** Preprint / source and reproducibility archive
+**Manuscript date:** June 30, 2026  
+**Revised Zenodo deposit:** September 22, 2026  
+**DOI:** [10.5281/zenodo.22896047](https://doi.org/10.5281/zenodo.22896047)  
+**Status:** Published preprint / source and reproducibility archive
 
 This repository contains the paper, LaTeX source, and numerical verification script for:
 
 > **A Prefactor Coefficient Law for the Gauss-Legendre AGM Algorithm**
 
-## Read the paper
+## Read and cite the paper
 
+- **Zenodo:** [10.5281/zenodo.22896047](https://doi.org/10.5281/zenodo.22896047)
 - [`paper/agm_prefactor_coefficient_law.pdf`](paper/agm_prefactor_coefficient_law.pdf)
 - [`paper/agm_prefactor_coefficient_law.tex`](paper/agm_prefactor_coefficient_law.tex)
 
@@ -75,6 +78,10 @@ The companion statement about the numerator-surgery coefficients \(\beta_n\) is 
 
 The verification script supports the reported computations. The proof of the main coefficient law is analytic and rests on the cited theta-function asymptotic.
 
+## Keywords
+
+Gauss-Legendre algorithm · arithmetic-geometric mean · operator coefficients · sequence acceleration · Aitken \(\Delta^2\) · prefactor asymptotics · Baker N-series · numerical analysis
+
 ## Related repositories
 
 - [`nseries-pi-acceleration`](https://github.com/CWBaker360/nseries-pi-acceleration)
@@ -107,4 +114,6 @@ The verification script supports the reported computations. The proof of the mai
 
 ## Rights
 
-Copyright © 2026 Wayne Baker. All rights reserved unless otherwise stated.
+The revised preprint archived at Zenodo is licensed under **Creative Commons Attribution 4.0 International (CC BY 4.0)**. Other repository files are governed by [`LICENSE_NOTICE.md`](LICENSE_NOTICE.md).
+
+Copyright © 2026 C. Wayne Baker.
