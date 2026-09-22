@@ -14,6 +14,8 @@
 - Added an explicit citation for the N-series comparison and corrected the Brent volume title to *Visualisation*.
 - Removed the non-SPDX `proprietary` value from `CITATION.cff`; rights remain governed by `LICENSE_NOTICE.md`.
 - Added a platform-independent SHA-256 generator that hashes canonical Git blob bytes, avoiding Windows CRLF/LF checksum drift.
+- Renamed the auxiliary quantity in the final beta remark from `A_n` to `D_n` to avoid collision with the earlier error prefactor `A_n`.
+- Added a compact beta-channel numerical verification table paralleling the alpha-channel tables.
 
 ## preprint-v1 — 2026-07-13
 
