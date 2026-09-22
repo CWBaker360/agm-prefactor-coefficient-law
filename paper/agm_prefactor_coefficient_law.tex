@@ -634,13 +634,18 @@ which proves the scaled limit.
 \begin{remark}
 The theorem explains the formerly numerical observation that
 \(\beta_{n+1}/\beta_n^2\) tends to zero with an approximately halving
-finite-\(n\) scale. Setting \(A_n=2^{n+2}\pi\),
+finite-\(n\) scale. To avoid overloading the prefactor notation \(A_n\)
+used earlier, set
+\[
+D_n=2^{n+2}\pi.
+\]
+Then
 \[
 \pi2^{n+1}\frac{C_{n+1}}{C_n^2}
 =
-\frac{A_n(2A_n-1)}{2(A_n-1)^2}
+\frac{D_n(2D_n-1)}{2(D_n-1)^2}
 =
-1+\frac{3}{2A_n}+\frac{2}{A_n^2}+O(A_n^{-3}).
+1+\frac{3}{2D_n}+\frac{2}{D_n^2}+O(D_n^{-3}).
 \]
 Thus
 \[
@@ -651,6 +656,51 @@ Thus
 +O(x_n).
 \]
 \end{remark}
+
+\section{Numerical Verification of the $\beta_n$ Law}
+
+The companion verification script evaluates the numerator--channel
+coefficient directly from the Gauss--Legendre recursion at high precision.
+Table~\ref{tab:beta} records the coefficient itself together with the scaled
+quantity
+\[
+S_n
+=
+-\pi2^{n+1}\frac{\beta_{n+1}}{\beta_n^2},
+\]
+which Theorem~\ref{thm:beta-prefactor} proves tends to $1$.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{c l l}
+\hline
+$n$ & $\beta_n$ & $S_n$ \\
+\hline
+0 & $-2.151900766752290\times10^{-2}$ & $1.141914530829174$ \\
+1 & $-8.415854367694321\times10^{-5}$ & $1.063029581987583$ \\
+2 & $-5.991449587079527\times10^{-10}$ & $1.030653289501889$ \\
+3 & $-1.472097424691757\times10^{-20}$ & $1.015121159164455$ \\
+4 & $-4.376441532326746\times10^{-42}$ & $1.007510170612647$ \\
+5 & $-1.919516499821586\times10^{-85}$ & $1.003742600849157$ \\
+\hline
+\end{tabular}
+\caption{Direct numerical check of the numerator--channel law.  The scaled
+quantity $S_n$ approaches $1$ as predicted by
+Theorem~\ref{thm:beta-prefactor}.}
+\label{tab:beta}
+\end{table}
+
+The same run also checks the sharper normalized expansion
+\[
+\frac{\beta_n}{-C_nx_n}
+=
+1-2x_n+
+\left(2-\frac1{C_n}\right)x_n^2
++O(x_n^3),
+\]
+with the displayed residuals decreasing doubly exponentially over the
+resolved range.  These computations are verification only; the theorem is
+proved analytically above.
 
 \section{Relation to Static and Dynamic Cancellation Operators}
 
