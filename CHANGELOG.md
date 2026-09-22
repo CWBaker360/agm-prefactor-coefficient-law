@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-09-22 — revised Zenodo deposit
+
+- Archived the revised preprint on Zenodo with DOI **10.5281/zenodo.22896047**.
+- Added the version-specific Zenodo DOI to the repository README and citation metadata.
+- Synchronized the public title, keywords, release date, and citation metadata with the revised Zenodo record.
+- Clarified the CC BY 4.0 license scope for the published preprint.
+
 ## preprint-v1 — 2026-07-13
 
 - Created the standalone paper and reproducibility archive.
