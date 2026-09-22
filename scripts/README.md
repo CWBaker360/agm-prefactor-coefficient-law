@@ -42,3 +42,17 @@ python scripts/verify_agm_beta_prefactor_law.py --precision 1000 --iterations 7
 ```
 
 The script writes `outputs/agm_beta_prefactor_audit.csv`. The computation is a reproducibility check; the proof is analytic.
+
+
+## Integrity-ledger generator
+
+`regenerate_sha256s.py` rebuilds `SHA256SUMS.txt` from the canonical bytes
+stored by Git at `HEAD`. Run it only after all content changes have been
+committed:
+
+```bash
+python scripts/regenerate_sha256s.py
+```
+
+This is preferred to hashing the working tree directly on Windows, where Git
+may present text files with CRLF line endings.
