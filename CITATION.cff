@@ -5,7 +5,9 @@ type: article
 authors:
   - family-names: Baker
     given-names: C. Wayne
-date-released: 2026-09-22
+date-released: 2026-10-24
+version: v1.1
+# DOI refers to an earlier Zenodo deposit, not necessarily these v1.1 GitHub files.
 doi: "10.5281/zenodo.22896047"
 repository-code: "https://github.com/CWBaker360/agm-prefactor-coefficient-law"
 url: "https://doi.org/10.5281/zenodo.22896047"
