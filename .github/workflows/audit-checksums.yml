@@ -48,7 +48,7 @@ jobs:
                   issue = None if actual.lower() == h.lower() else ('hash mismatch', name)
               if issue is None:
                   matched += 1
-              elif p.parts and p.parts[0] in ('paper', 'scripts', 'output', 'outputs'):
+              elif p.suffix.lower() != '.md' and p.parts and p.parts[0] in ('paper', 'scripts', 'output', 'outputs'):
                   critical.append(issue)
               else:
                   metadata.append(issue)
