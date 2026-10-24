@@ -1,5 +1,14 @@
 # Changelog
 
+## GitHub v1.1 — 2026-10-24
+
+- Uploaded reviewed LaTeX and PDF manuscript files.
+- Updated documentation for the prefactor-limit theorem and supporting numerical tables.
+- Existing Zenodo DOI and its CC BY 4.0 licensing scope are unchanged.
+- Archived the preceding repository state at `pre-v1.1-backup`.
+- PDF rebuild from committed TeX has not been independently certified.
+
+
 ## 2026-09-22 — revised Zenodo deposit
 
 - Archived the revised preprint on Zenodo with DOI **10.5281/zenodo.22896047**.
