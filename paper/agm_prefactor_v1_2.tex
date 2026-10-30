@@ -1,0 +1,160 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,microtype}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\theoremstyle{definition}\newtheorem{remark}{Remark}\newtheorem{observation}{Numerical Observation}
+\title{A Prefactor Coefficient Law for the Gauss--Legendre AGM Algorithm\\\large A refined diagnostic asymptotic}
+\author{Wayne Baker\\\small Independent Researcher}
+\date{Original: June 30, 2026; v1.2 reviewed release candidate: October 29, 2026}
+\begin{document}\maketitle
+\begin{abstract}
+For the lower Gauss--Legendre approximants $\pi_n$, consider the exact, reference-dependent diagnostic weight
+$\alpha_n=-(\pi_{n+1}-\pi)/(\pi_{n+1}-\pi_n)$. Using the leading two-term theta-function prefactor recorded by Brent, we recover $\alpha_{n+1}/\alpha_n^2\to1/2$ as a direct corollary and sharpen the limit by an explicit rational prefactor model. With $x_n=2^{n+1}\pi$, under a quantified exponential remainder hypothesis, we obtain
+\[
+\frac{\alpha_{n+1}}{\alpha_n^2}
+=\frac{(4x_n-1)(x_n-1)^2}{(2x_n-1)^3}
++O(\operatorname{poly}(2^n)e^{-x_n})
+=\frac12-\frac{3}{8x_n}+O(x_n^{-2}).
+\]
+This explains the observed approach to $1/2$ from below. A numerical investigation identifies a possible second exponential term and a correspondingly sharper finite-index correction; these are stated as observations, not theorems. The weight depends on the unknown target $\pi$ and is not an implementable acceleration method.
+\end{abstract}
+\section{AGM indexing and the diagnostic coefficient}
+Start with $a_0=1$, $b_0=1/\sqrt2$, $t_0=1/4$, and $p_0=1$, and use
+\[
+\begin{aligned}
+a_{n+1}&=(a_n+b_n)/2,&b_{n+1}&=\sqrt{a_nb_n},\\
+t_{n+1}&=t_n-p_n(a_n-a_{n+1})^2,&p_{n+1}&=2p_n.
+\end{aligned}
+\]
+Throughout this paper the lower approximant is
+\[
+\pi_n=\frac{(a_n+b_n)^2}{4t_n}=\frac{a_{n+1}^2}{t_n},\qquad
+\varepsilon_n=\pi_n-\pi<0.
+\]
+The index on $\pi_n$ is the index of $a_n,b_n,t_n$ appearing on the left expression, not of $a_{n+1}$. Define
+\[
+\alpha_n=-\frac{\pi_{n+1}-\pi}{\pi_{n+1}-\pi_n}
+=-\frac{\varepsilon_{n+1}}{\varepsilon_{n+1}-\varepsilon_n}.
+\]
+Thus $\pi=\pi_{n+1}+\alpha_n(\pi_{n+1}-\pi_n)$ holds \emph{by definition}. Since evaluation of $\alpha_n$ requires $\pi$, this coefficient is a retrospective diagnostic, not a computable error-correction rule or algorithmic speed claim.
+\section{Classical prefactor input}
+Brent's analysis in Section~4 (``Some Superlinearly Convergent Algorithms for $\pi$''), equation~(20), and the expansion immediately following equation~(21), records the leading two-term expression and a printed remainder estimate (with $q=e^{-\pi}$)~\cite{brent2020}:
+\begin{equation}\label{eq:brent-printed}
+\pi-\pi_n=(2^{n+4}\pi^2-8\pi)e^{-\pi 2^{n+1}}
+-O\!\left(2^n e^{-\pi 2^{n+2}}\right).
+\end{equation}
+Brent's lower approximant $a_{n+1}^{2}/s_n$ uses $s_0=1/4$ and the same AGM updates as the present $\pi_n=a_{n+1}^{2}/t_n$ with $t_n=s_n$; therefore the discrepancy discussed here is not an indexing convention. The minus sign preceding Brent's $O$ symbol is explicitly described there as informal sign information. We reproduce this historical statement without treating its claimed *size* as independently established: the high-precision residual analysis described in Section~\ref{sec:second} indicates a potentially larger polynomial prefactor at the second exponential order. Resolving the discrepancy analytically remains open.
+
+For the theorems below we need only the weaker leading asymptotic input
+\begin{equation}\label{eq:error}
+\varepsilon_n=B_n e^{-x_n}\bigl(1+o(1)\bigr),\qquad
+x_n=2^{n+1}\pi,\quad B_n=-8\pi(x_n-1),\quad x_{n+1}=2x_n.
+\end{equation}
+More quantitatively, a remainder $O(x_n^M e^{-2x_n})$ for some fixed $M$ is sufficient for the exponentially small error bounds stated below; its required analytic justification must not be inferred from the numerical second-order fit alone. For the rational approximation we therefore explicitly state that quantitative hypothesis.
+Writing $\varepsilon_n=A_n e^{-x_n}$ gives $A_n/B_n\to1$ and $A_{n+1}/A_n\to2$. The limiting statement follows from the leading theta-function expansion; it is not claimed as an independent AGM theorem.
+\section{Coefficient law and sharpened correction}
+\begin{lemma}\label{lem:ratios}
+If $r_n=\varepsilon_{n+1}/\varepsilon_n\to0$, then
+\[
+\alpha_n=\frac{r_n}{1-r_n},\qquad
+\frac{\alpha_{n+1}}{\alpha_n^2}=
+\frac{\varepsilon_{n+2}\varepsilon_n^2}{\varepsilon_{n+1}^3}
+\frac{(1-r_n)^2}{1-r_{n+1}}.
+\]
+\end{lemma}
+\begin{proof}Both identities follow by substitution and cancellation.\end{proof}
+\begin{theorem}[Prefactor coefficient limit]\label{thm:limit}
+For the above lower Gauss--Legendre sequence,
+\[\lim_{n\to\infty}\frac{\alpha_{n+1}}{\alpha_n^2}=\frac12.\]
+\end{theorem}
+\begin{proof}
+By \eqref{eq:error}, $r_n\to0$. Lemma~\ref{lem:ratios} reduces the ratio asymptotically to $\varepsilon_{n+2}\varepsilon_n^2/\varepsilon_{n+1}^3$. The exponential factors cancel exactly because $x_{n+2}+2x_n-3x_{n+1}=0$. The remaining ratio tends to $2(1/2)^2=1/2$, since $A_{n+1}/A_n\to2$.
+\end{proof}
+\begin{corollary}[Finite-index rational prefactor law under quantified remainder]\label{cor:sharp}
+Assume in addition that $\varepsilon_n=B_ne^{-x_n}+O(x_n^M e^{-2x_n})$ for some fixed $M\geq0$. Let $x=x_n=2^{n+1}\pi$. Then
+\begin{equation}\label{eq:rational}
+\frac{\alpha_{n+1}}{\alpha_n^2}
+=\frac{(4x-1)(x-1)^2}{(2x-1)^3}
++O(x^K e^{-x}),
+\end{equation}
+and hence
+\begin{equation}\label{eq:expansion}
+\frac{\alpha_{n+1}}{\alpha_n^2}
+=\frac12-\frac{3}{8x}+O(x^{-2})
+=\frac12-\frac{3}{2^{n+4}\pi}+O(4^{-n}).
+\end{equation}
+Also the rescaled error prefactors obey
+\[
+\frac{A_{n+1}}{A_n}=2+\frac1{x-1}+O(x^K e^{-x}).
+\]
+\end{corollary}
+\begin{proof}
+Use $B_n=-8\pi(x-1)$, $B_{n+1}=-8\pi(2x-1)$, and $B_{n+2}=-8\pi(4x-1)$ in Lemma~\ref{lem:ratios}. The pure prefactor quotient is exactly the rational expression in \eqref{eq:rational}. Under the additional quantified remainder hypothesis, the relative errors in the $B_k$ are exponentially small, and $r_n=O(e^{-x}\operatorname{poly}(2^n))$; their effect on the diagnostic quotient is likewise exponentially small. For a sufficiently large fixed $K$ depending on $M$, expansion in $1/x$ gives $1/2-3/(8x)+O(x^{-2})$. The prefactor ratio follows from $B_{n+1}/B_n=(2x-1)/(x-1)$ and the same quantified hypothesis.
+\end{proof}
+\begin{remark}
+Equation \eqref{eq:expansion} describes the eventual approach to $1/2$ from below. Under the stated quantitative hypothesis, the finite-$n$ rational expression is an asymptotic model, not an exact identity for the numerical AGM coefficient. Exponentially small corrections remain.
+\end{remark}
+\section{Second exponential order: numerical observation and open analytic issue}\label{sec:second}
+\begin{observation}[Numerically identified second-order coefficient]\label{obs:second}
+Put $x=2^{n+1}\pi$. The high-precision independent review reports that the residual after the leading prefactor is consistent, at the tested indices, with
+\begin{equation}\label{eq:second-obs}
+\varepsilon_n=-8\pi(x-1)e^{-x}
++8\pi(2x-1)(4x-3)e^{-2x}
++\text{higher exponential orders}.
+\end{equation}
+The coefficient $8\pi(2x-1)(4x-3)$ was numerically identified using calculations up to 6000 decimal digits, with reported fit residual below $10^{-75}$; it has \emph{not} been derived here from the theta-function formulas. In particular \eqref{eq:second-obs} does not establish a uniform remainder estimate or an exact coefficient identity.
+\end{observation}
+The observed second term grows as $O(x^2e^{-2x})$, whereas the printed remainder in \eqref{eq:brent-printed} has the smaller polynomial factor $O(xe^{-2x})$. These two asymptotic descriptions cannot both be valid with the standard meaning of $O$ if the candidate quadratic coefficient is correct. The indexing and lower-approximant definitions agree; an analytic theta-function expansion is needed to adjudicate the discrepancy. We do \emph{not} attribute the candidate $O(x^2e^{-2x})$ remainder to Brent.
+
+\begin{observation}[Candidate exponential correction to the rational model]
+Propagation of the identified second-order term through Lemma~\ref{lem:ratios} suggests
+\begin{equation}\label{eq:candidate-refined}
+\frac{\alpha_{n+1}}{\alpha_n^2}
+=\frac{(4x-1)(x-1)^2}{(2x-1)^3}
+-\frac{4(4x-1)(x-1)}{2x-1}e^{-x}
++\text{smaller terms}.
+\end{equation}
+The independent numerical comparison reports residuals of approximately $1.7\times10^{-7}$, $5.2\times10^{-39}$ and $8.1\times10^{-343}$ for $n=1,3,6$, respectively, after this correction. The further claim that the omitted term is $O(x^2e^{-2x})$ remains \emph{conditional} on a rigorously controlled third-order theta expansion; it is not asserted as a theorem in this revision.
+\end{observation}
+
+\section{Numerical verification}
+The following figures are retained from the original manuscript; they were reported with 500-decimal-digit \texttt{mpmath} calculations and the above indexing. The theorem is retained; the additional second-order statements are explicitly numerical and do not replace that earlier numerical record.
+\begin{table}[ht]\centering\small
+\begin{tabular}{cl}\toprule $n$ & $\alpha_n$ \\\midrule
+0 & $4.476840443051657\times10^{-3}$\\
+1 & $7.278747106485182\times10^{-6}$\\
+2 & $2.482705775153228\times10^{-11}$\\
+3 & $2.988090953871379\times10^{-22}$\\
+4 & $4.397065311352923\times10^{-44}$\\
+5 & $9.594611535813435\times10^{-88}$\\
+6 & $4.585616315217315\times10^{-175}$\\\bottomrule
+\end{tabular}\caption{Reference-dependent fitted diagnostic weights.}\end{table}
+\begin{table}[ht]\centering\small
+\begin{tabular}{cll}\toprule $n$ & $\alpha_{n+1}/\alpha_n^2$ & $A_{n+1}/A_n$\\\midrule
+0 & $0.3631728700311416$ & $2.3866261558728965$\\
+1 & $0.4686104763344650$ & $2.0871750987545307$\\
+2 & $0.4847784478028806$ & $2.0414374856886031$\\
+3 & $0.4924649101466708$ & $2.0202981874959604$\\
+4 & $0.4962511920458477$ & $2.0100471245391349$\\
+5 & $0.4981302572056423$ & $2.0049984522335209$\\\bottomrule
+\end{tabular}\caption{Observed coefficient and prefactor ratios.}\end{table}
+\section{Numerator channel and computational scope}
+Set $q_n=(a_n+b_n)^2$ and
+\[\beta_n=-\frac{q_{n+1}-4\pi t_{n+1}}{q_{n+1}-q_n}.\]
+\begin{observation}[Numerical only]
+The original high-precision calculation suggested $\beta_{n+1}/\beta_n^2\to0$. An independent high-precision review reproduced the reported values and found them consistent with $\beta_{n+1}/\beta_n^2\sim-1/x_n$. Neither this asymptotic equivalent nor the limit is proved here.
+\end{observation}
+The static Baker N-series uses fixed rational weights to remove powers of a resolution parameter. In contrast the present $\alpha_n$ uses an unknown limit and is \emph{not} an acceleration prescription. Aitken's $\Delta^2$ extrapolation is a different, implementable three-point operation; its merit relative to taking the next AGM iterate is not asserted here without a separate error-and-cost comparison.
+\section{Conclusion}
+The limit $\alpha_{n+1}/\alpha_n^2\to1/2$ is a transparent consequence of Brent's lower-approximant asymptotic. Retaining the subleading $-8\pi$ prefactor term motivates the rational model \eqref{eq:rational}; its stated exponential error control is conditional on a quantified lower-approximant remainder. A new numerical candidate for the second exponential term exposes an unresolved discrepancy with the polynomial factor in a printed remainder estimate and motivates a future theta-function derivation. This is a diagnostic comparison of error structure, not a new algorithm for $\pi$ or a fixed-coefficient extrapolation method.
+\begin{thebibliography}{9}
+\bibitem{brent2020} R.~P.~Brent, ``The Borwein brothers, Pi and the AGM,'' in \emph{From Analysis to Visualization}, Springer Proceedings in Mathematics \& Statistics 313 (2020), 323--348; also arXiv:1802.07558.
+\bibitem{brent1976} R.~P.~Brent, ``Fast multiple-precision evaluation of elementary functions,'' \emph{J. ACM} 23 (1976), 242--251.
+\bibitem{borwein1987} J.~M.~Borwein and P.~B.~Borwein, \emph{Pi and the AGM}, Wiley, 1987.
+\bibitem{salamin1976} E.~Salamin, ``Computation of $\pi$ using arithmetic-geometric mean,'' \emph{Math. Comp.} 30 (1976), 565--570.
+\bibitem{aitken1926} A.~C.~Aitken, ``On Bernoulli's numerical solution of algebraic equations,'' \emph{Proc. Roy. Soc. Edinburgh} 46 (1926), 289--305.
+\end{thebibliography}
+\end{document}
