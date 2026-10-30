@@ -10,7 +10,16 @@ This repository contains the paper, LaTeX source, and numerical verification scr
 
 > **A Prefactor Coefficient Law for the Gauss-Legendre AGM Algorithm**
 
-## Read and cite the paper
+
+## Current reviewed manuscript — v1.2 (October 29, 2026)
+
+- [Read v1.2 PDF](paper/agm_prefactor_v1_2.pdf)
+- [LaTeX source v1.2](paper/agm_prefactor_v1_2.tex)
+
+These files represent the latest reviewed revision in this repository. Earlier manuscript files and the existing Zenodo DOI remain historical citations; the repository update does not claim the old Zenodo deposit now contains v1.2. The finite-index remainder certificate remains open.
+
+
+## Earlier manuscript files and DOI
 
 - **Zenodo:** [10.5281/zenodo.22896047](https://doi.org/10.5281/zenodo.22896047)
 - [`paper/agm_prefactor_coefficient_law.pdf`](paper/agm_prefactor_coefficient_law.pdf)
@@ -117,12 +126,3 @@ Gauss-Legendre algorithm · arithmetic-geometric mean · operator coefficients �
 The revised preprint archived at Zenodo is licensed under **Creative Commons Attribution 4.0 International (CC BY 4.0)**. Other repository files are governed by [`LICENSE_NOTICE.md`](LICENSE_NOTICE.md).
 
 Copyright © 2026 C. Wayne Baker.
-
-## Manuscript review status (October 24, 2026)
-
-The PDF and LaTeX files currently in `paper/` are the repository's existing published/preprint versions. A subsequent editorial and mathematical review has identified proposed clarifications for a future revision. Those revisions have **not** been merged into this repository, and the current PDF must not be described as incorporating them. Existing numerical verification scripts and results are unchanged. A revised source/PDF pair will be considered separately after a source-to-PDF consistency check and further mathematical review. This status notice makes no new scientific or priority claim.
-
-
-## October 30, 2026 source update (PDF synchronization pending)
-
-The reviewed October 29, 2026 manuscript source (v1.2) is now at [`paper/agm_prefactor_v1_2.tex`](paper/agm_prefactor_v1_2.tex). This versioned source was added without modifying the existing authoritative `paper/` LaTeX/PDF pair. The companion v1.2 PDF has **not yet been uploaded**, so links to the existing PDF still point to the previous version. Do not cite that PDF as v1.2 until the matched PDF is committed.
